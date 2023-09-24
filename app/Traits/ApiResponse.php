@@ -1,9 +1,11 @@
 <?php
 namespace App\Traits;
 
+use Illuminate\Http\JsonResponse;
+
 trait ApiResponse{
 
-    protected function successResponse($data, $code = 200, $message = null): \Illuminate\Http\JsonResponse
+    protected function successResponse($data, $code = 200, $message = null): JsonResponse
     {
         return response()->json([
             'success'=> true,
@@ -12,7 +14,7 @@ trait ApiResponse{
         ], $code);
     }
 
-    protected function errorResponse($code, $message = null, $data = []): \Illuminate\Http\JsonResponse
+    protected function errorResponse($code, $message = null, $data = []): JsonResponse
     {
         return response()->json([
             'success' => false,

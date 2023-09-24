@@ -4,10 +4,7 @@ namespace Tests\Feature;
 
 use App\Mail\NewUserRegistered;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class UserRegistrationTest extends TestCase

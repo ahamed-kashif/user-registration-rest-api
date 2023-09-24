@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegistrationRequest;
 use App\Models\User;
 use App\Traits\ApiResponse;
+use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,9 +19,9 @@ class AuthController extends Controller
     /**
      * User registration
      * @param UserRegistrationRequest $request
-     * @return HttpResponseException|\Illuminate\Http\JsonResponse
+     * @return HttpResponseException|JsonResponse
      */
-    public function register(UserRegistrationRequest $request): HttpResponseException|\Illuminate\Http\JsonResponse
+    public function register(UserRegistrationRequest $request): HttpResponseException|JsonResponse
     {
         try{
             $user  = User::create([
@@ -29,7 +31,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             return $this->successResponse($user->toArray(),200,'User registered successfully');
-        }catch (\Exception $e){
+        }catch (Exception $e){
             if($e instanceof HttpResponseException){
                 return $e;
             }

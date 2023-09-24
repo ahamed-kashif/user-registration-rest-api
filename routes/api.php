@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('/register',[\App\Http\Controllers\Auth\AuthController::class,'register'])->name('user.registration');
+Route::post('/register',[AuthController::class,'register'])->name('user.registration');
