@@ -19,7 +19,7 @@ class UserRegistrationTest extends TestCase
     {
         ini_set("memory_limit","188M");
 
-
+    //calling api
         $response = $this->post('/api/register',[
             'name' => 'test user',
             'email' => 'test@test.com',
@@ -33,6 +33,7 @@ class UserRegistrationTest extends TestCase
      */
     public function test_users_can_not_register_without_validation(): void
     {
+        //calling api
         $response = $this->post('/api/register',[
             'name' => 'test user',
             'email' => 'test@test.com',
@@ -49,7 +50,7 @@ class UserRegistrationTest extends TestCase
     {
         Mail::fake();
 
-        // Simulate user registration, replace with your actual registration logic
+        // Simulate user registration
         $user = User::create(
             [
                 'name' => 'test1 user',
